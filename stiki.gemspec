@@ -1,17 +1,17 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "project_monster/wiki/version"
+require "stiki/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "project_monster_wiki"
-  s.version     = ProjectMonster::Wiki::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
+  s.name        = "stiki"
+  s.version     = Stiki::VERSION
+  s.authors     = ["Michael Guymon"]
+  s.email       = ["michael.guymon@gmail.com"]
   s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of ProjectMonsterWiki."
-  s.description = "TODO: Description of ProjectMonsterWiki."
+  s.summary     = "The Icky Stiki Wiki"
+  s.description = "TODO: Description of Stiki."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]

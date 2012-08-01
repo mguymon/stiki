@@ -1,6 +1,6 @@
 class CreateProjectMonsterWikiSpaces < ActiveRecord::Migration
   def change
-    create_table :project_monster_spaces do |t|
+    create_table :stiki_spaces do |t|
       t.string :name
 
       t.timestamps

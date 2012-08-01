@@ -1,6 +1,6 @@
-require_dependency "project_monster/application_controller"
+require_dependency "stiki/application_controller"
 
-module ProjectMonster
+module Stiki
   class SpacesController < ApplicationController
     def index
       

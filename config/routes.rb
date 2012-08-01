@@ -1,11 +1,12 @@
-ProjectMonster::Wiki::Engine.routes.draw do
-  namespace :project_monster do
+Stiki::Engine.routes.draw do
+  
+  namespace :stiki do
     resources :authors
   
     resources :pages
   
     resources :spaces
   end
-  root :to => 'project_monster::spaces#index'
+  root :to => 'stiki::spaces#index'
   
 end

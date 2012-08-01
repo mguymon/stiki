@@ -1,4 +1,4 @@
-module ProjectMonster
+module Stiki
   module ApplicationHelper
   end
 end

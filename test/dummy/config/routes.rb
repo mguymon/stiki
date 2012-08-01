@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount ProjectMonster::Wiki::Engine => "/wiki"
+  mount Stiki::Engine => "/wiki"
 end

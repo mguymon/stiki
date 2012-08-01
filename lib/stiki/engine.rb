@@ -1,4 +1,4 @@
-module ::ProjectMonster::Wiki
+module Stiki
   class Engine < ::Rails::Engine
     #isolate_namespace ProjectMonsterWiki
     

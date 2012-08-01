@@ -1,4 +1,4 @@
-module ProjectMonster
+module Stiki
   module PagesHelper
   end
 end
