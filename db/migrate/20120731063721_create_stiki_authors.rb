@@ -1,4 +1,4 @@
-class CreateProjectMonsterWikiAuthors < ActiveRecord::Migration
+class CreateStikiAuthors < ActiveRecord::Migration
   def change
     create_table :stiki_authors do |t|
       t.integer :user_id

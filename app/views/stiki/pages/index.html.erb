@@ -1,14 +1,16 @@
-<%- @spaces.each do |space| %>
 <div class="row-fluid">
   <div class="span8">
     <div class="row-fluid">
-      <div class="hero-unit">
-        <h2><%= link_to space.name, stiki.space_pages_path(space) %></h2>
-      </div>
+      <ul class="nav nav-list">
+        <%- @pages.each do |page| %>
+          <li>
+            <a href="#"><%= page.title %></a>
+          </li>
+        <% end -%>
+      </ul>
     </div>
   </div>
 </div>
-<% end -%>
 <div class="row-fluid">
   <div class="span8">
     <div class="row-fluid">
