@@ -25,6 +25,7 @@ describe Stiki::PagesController do
     it { response.should be_success }
     it { should assign_to(:space) }
     it { should assign_to(:page) }
+    it { should assign_to(:markup) }
     it { should render_template('stiki/pages/show') }
   end
   
