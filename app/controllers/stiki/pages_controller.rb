@@ -1,4 +1,5 @@
 require_dependency "stiki/application_controller"
+require 'redcarpet'
 
 module Stiki
   class PagesController < ApplicationController
@@ -10,6 +11,9 @@ module Stiki
     
     def show
       @page = Page.find( params[:id])
+      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+        :autolink => true, :space_after_headers => true)
+      @markup = markdown.render( @page.body ).html_safe 
     end
     
     def new
@@ -17,6 +21,7 @@ module Stiki
     end
     
     def edit
+      @page = Page.find( params[:id] )
       
     end
     
@@ -32,7 +37,14 @@ module Stiki
     end
     
     def update
+      @page = Page.find( params[:id] )
       
+      if @page.update_attributes( params[:page] )
+        redirect_to stiki.space_page_path(@space, @page)
+      else
+        flash[:error] = "Error editing Page"
+        render "stiki/pages/edit"
+      end
     end
     
     protected

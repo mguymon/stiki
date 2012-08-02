@@ -21,10 +21,12 @@
 <div class="row-fluid">
   <div class="span9">
     <div class="row-fluid">
-      <div class="span11 well"><%= @page.body %></div>
+      <div class="span11 well"><%= @markup %></div>
     </div>
     <div class="row-fluid">
-      <div class="span11 well">List</div>
+      <div class="span11 well">
+        <%= link_to 'Edit', stiki.edit_space_page_path(@space,@page), :class => 'btn btn-primary' %>
+      </div>
     </div>
   </div>
   <div class="span3">

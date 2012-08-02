@@ -18,7 +18,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 3.2.1"
   s.add_dependency "friendly_id", "~> 4.0.1"
-  s.add_dependency 'twitter-bootstrap-rails'
+  s.add_dependency 'twitter-bootstrap-rails', "~> 2.1.1"
+  s.add_dependency 'redcarpet', "~> 2.1.1"
   # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "sqlite3"

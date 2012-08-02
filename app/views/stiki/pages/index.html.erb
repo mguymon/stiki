@@ -1,10 +1,10 @@
 <div class="row-fluid">
   <div class="span8">
-    <div class="row-fluid">
+    <div class="row-fluid well">
       <ul class="nav nav-list">
         <%- @pages.each do |page| %>
           <li>
-            <a href="#"><%= page.title %></a>
+            <%= link_to page.title, stiki.space_page_path(@space, page)%>
           </li>
         <% end -%>
       </ul>
