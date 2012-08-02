@@ -1,4 +1,4 @@
-require_dependency "Stiki/application_controller"
+require_dependency "stiki/application_controller"
 
 module Stiki
   class AuthorsController < ApplicationController
