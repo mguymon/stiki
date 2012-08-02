@@ -1,3 +1,5 @@
+require 'friendly_id'
+
 module Stiki
   class Page < ActiveRecord::Base
     self.table_name = "stiki_pages"
