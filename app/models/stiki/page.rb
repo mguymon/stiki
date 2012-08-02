@@ -11,7 +11,7 @@ module Stiki
     
     attr_accessible :body, :title
     
-    validates :title, :uniqueness => true, :presence => true
+    validates :title, :uniqueness => {:scope => :space_id}, :presence => true
     validates :body, :presence => true
   end
 end
