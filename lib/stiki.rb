@@ -3,17 +3,20 @@ require 'stiki/auth'
 require 'stiki/auth/devise'
 
 module Stiki
-    
-    @@auth = false
-    @@auth_pages_actions = [:new, :create, :edit, :update]
-    @@auth_spaces_actions = [:new, :create, :edit, :update]
-    @@auth_mapping = {}
   
     mattr_accessor :user_class
     mattr_accessor :auth
     mattr_accessor :auth_pages_actions
     mattr_accessor :auth_spaces_actions
     mattr_accessor :auth_mapping
+    
+    def self.reset
+      @@auth = false
+      @@auth_pages_actions = [:new, :create, :edit, :update]
+      @@auth_spaces_actions = [:new, :create, :edit, :update]
+      @@auth_mapping = {}
+    end
+    Stiki.reset()
     
     def self.config(&blk)
       

@@ -24,4 +24,5 @@ describe Stiki do
       Stiki.auth_spaces_actions.should eql [:new, :create, :edit, :update]
     end
   end
+  
 end

@@ -43,3 +43,25 @@ RSpec.configure do |config|
   
   config.include FactoryGirl::Syntax::Methods
 end
+
+# Shim the Stiki ApplicationController to get access to the filters
+# and stub the devise before_filter method
+class Stiki::ApplicationController 
+
+  def self.filters(kind = nil)
+    all_filters = _process_action_callbacks
+    
+    filters = {}
+    all_filters.each do |filter|
+      filters[filter.kind] = [] if filters[filter.kind].nil?
+      filters[filter.kind] << filter.filter
+    end
+    filters
+    
+  end
+  
+  def authenticate_user!
+    
+  end
+
+end

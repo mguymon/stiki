@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'redcarpet', "~> 2.1.1"
   # s.add_dependency "jquery-rails"
 
+  s.add_development_dependency "devise", "~> 2.0.4"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails", "~> 2.11.0"
   s.add_development_dependency 'factory_girl_rails', "~> 3.6.0"

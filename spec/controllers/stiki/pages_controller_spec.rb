@@ -3,6 +3,10 @@ require 'stiki/pages_controller'
 
 describe Stiki::PagesController do
   
+  it "should have before_filters" do
+      Stiki::PagesController.filters[:before].should include(:get_space);
+  end
+  
   describe "GET #index" do
     before do
       @space = FactoryGirl.create(:space)
