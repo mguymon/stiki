@@ -1,3 +1,39 @@
-= Stiki 
+= The Icky Stiki Wiki
 
-This project rocks and uses MIT-LICENSE.
+Stiki is a simple Rails Engine for sites that use twitter-bootstrap.
+
+== Installation
+In Rails 3, add this to your Gemfile and run the bundle command.
+
+  gem "cancan"
+
+== Getting Started
+First, you will need to create the Stiki database migations:
+
+  rake stiki_engine:install:migrations
+
+and migrate your database
+
+  rake db:migrate
+
+Second, you will need to add Stiki to your config/routes.rb
+
+  mount Stiki::Engine => "/wiki"
+
+That is all!
+
+== Stiki Configuration
+To configure Stiki, create a config in config/initializers/stiki.rb
+
+  Stiki.config do |stiki|
+    # Optional user class, required for author and devise
+    stiki.user_class = 'User' 
+
+    # Optional, use devise for authentication
+    stiki.authenticate_by = :devise 
+    stiki.authenticate_pages = :all   # other options are :only => [actions]  or :except => [actions]
+    stiki.authenticate_spaces = :all  # other options are :only => [actions] or :except => [actions]
+
+    # Optional, use cancan for authorization
+    stiki.authorize_by = :cancan
+  end
