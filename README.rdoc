@@ -1,6 +1,9 @@
 = The Icky Stiki Wiki
 
-Stiki is a simple Rails Engine for sites that use twitter-bootstrap.
+Stiki is a simple Rails Engine for sites that use twitter-bootstrap. Stiki is comprised of Spaces that have multiple Pages. A Page is 
+comprised of a Title and Wiki Body.
+
+Presently only wiki format supported is MarkDown.
 
 == Installation
 
@@ -22,7 +25,7 @@ Second, you will need to add Stiki to your config/routes.rb
 
   mount Stiki::Engine => "/wiki"
 
-That is all!
+That is all! Now you can start up your rails app and goto /wiki to start having wiki fun.
 
 == Stiki Configuration
 
