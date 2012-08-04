@@ -3,6 +3,12 @@ require 'stiki/pages_controller'
 
 describe Stiki::PagesController do
   
+  before do
+    Stiki.config do |stiki|
+      stiki.user_class = 'Author'
+    end
+  end
+  
   it "should have before_filters" do
       Stiki::PagesController.filters[:before].should include(:get_space);
   end

@@ -44,6 +44,12 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 end
 
+# Devise does not like modules 
+class Author < ActiveRecord::Base
+    self.table_name = "stiki_authors"
+end
+
+
 # Shim the Stiki ApplicationController to get access to the filters
 # and stub the devise before_filter method
 class Stiki::ApplicationController 
@@ -60,7 +66,7 @@ class Stiki::ApplicationController
     
   end
   
-  def authenticate_user!
+  def authenticate_author!
     
   end
 

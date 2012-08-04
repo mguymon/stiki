@@ -1,27 +1,29 @@
 require 'spec_helper'
 require 'stiki'
 
+
 describe Stiki do
   
   describe "#config" do
     before do
       Stiki.config do |stiki|
-        stiki.auth = :devise
-        stiki.auth_pages_actions = [:blue, :green, :orange ]
-        stiki.auth_spaces_actions = [:new, :create, :edit, :update]
+        stiki.authenticate_by = :devise
+        stiki.user_class = 'Author'
+        stiki.authenticate_pages_actions = {:only =>  [:blue, :green, :orange ] }
+        stiki.authenticate_spaces_actions = {:only => [:new, :create, :edit, :update] }
       end
     end
     
     it "should set auth" do
-      Stiki.auth.should eql :devise
+      Stiki.authenticate_by.should eql :devise
     end
     
     it "should set auth_pages_actions" do
-      Stiki.auth_pages_actions.should eql [:blue, :green, :orange ]
+      Stiki.authenticate_pages_actions[:only].should eql( [:blue, :green, :orange ] )
     end
     
     it "should set auth_spaces_actions" do
-      Stiki.auth_spaces_actions.should eql [:new, :create, :edit, :update]
+      Stiki.authenticate_spaces_actions[:only].should eql( [:new, :create, :edit, :update] )
     end
   end
   

@@ -1,19 +1,18 @@
 require "stiki/engine"
-require 'stiki/auth'
-require 'stiki/auth/devise'
+require 'stiki/authenticate/devise'
 
 module Stiki
   
     mattr_accessor :user_class
-    mattr_accessor :auth
-    mattr_accessor :auth_pages_actions
-    mattr_accessor :auth_spaces_actions
+    mattr_accessor :authenticate_by
+    mattr_accessor :authenticate_pages_actions
+    mattr_accessor :authenticate_spaces_actions
     mattr_accessor :auth_mapping
     
     def self.reset
-      @@auth = false
-      @@auth_pages_actions = [:new, :create, :edit, :update]
-      @@auth_spaces_actions = [:new, :create, :edit, :update]
+      @@authenticate_by = false
+      @@authenticate_pages_actions = nil
+      @@authenticate_spaces_actions = nil
       @@auth_mapping = {}
     end
     Stiki.reset()
@@ -22,15 +21,22 @@ module Stiki
       
       yield self
       
-      if auth
+      if authenticate_by
         
-        if auth.to_sym == :devise
-          @@auth_mapping = { :pages => @@auth_pages_actions, :spaces => @@auth_spaces_actions }
+        if authenticate_by.to_sym == :devise
           
-          Rails.logger.info( "ARRRRG #{Stiki.auth_mapping.inspect}")
-          ::Stiki::SpacesController.send(:include, Stiki::Auth::Devise )
+          if user_class.nil?
+            raise "Stiki.user_class is required for devise auth"
+          end
           
-          ::Stiki::PagesController.send( :include, Stiki::Auth::Devise )
+          @@authenticate_pages_actions = {:only => [:new, :create, :edit, :update]} if @@authenticate_pages_actions.nil?
+          @@authenticate_spaces_actions = {:only => [:new, :create, :edit, :update]} if @@authenticate_spaces_actions.nil?
+          
+          @@auth_mapping = { :pages => @@authenticate_pages_actions, :spaces => @@authenticate_spaces_actions }
+          
+          ::Stiki::SpacesController.send(:include, Stiki::Authenticate::Devise )
+          
+          ::Stiki::PagesController.send( :include, Stiki::Authenticate::Devise )
         end
         
       end

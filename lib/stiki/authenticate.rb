@@ -1,7 +1,7 @@
 require 'stiki'
 
 module Stiki
-  module Auth
+  module Authenticate
     
   end
 end
