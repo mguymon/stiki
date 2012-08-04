@@ -1,10 +1,12 @@
 require "stiki/engine"
 require 'stiki/authenticate/devise'
 require 'stiki/authorize/cancan'
+require 'stiki/model/map_author'
 
 module Stiki
   
     mattr_accessor :user_class
+    mattr_accessor :user_identifier
     mattr_accessor :authenticate_by
     mattr_accessor :authenticate_pages
     mattr_accessor :authenticate_spaces
@@ -24,6 +26,14 @@ module Stiki
     def self.config(&blk)
       
       yield self
+      
+      if user_class
+        unless user_identifier
+          user_identifier = "to_s"
+        end
+        
+        ::Stiki::Author.send(:include, Stiki::Model::MapAuthor)
+      end
       
       if authenticate_by
         
@@ -51,6 +61,12 @@ module Stiki
           
           ::Stiki::PagesController.send( :include, Stiki::Authorize::Cancan )
         end
+      end
+    end
+    
+    module Helper      
+      def self.user_model_name
+        Stiki.user_class.constantize.name.underscore
       end
     end
 end

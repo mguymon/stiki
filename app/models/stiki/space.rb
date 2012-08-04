@@ -6,6 +6,7 @@ module Stiki
     friendly_id :name, use: :slugged
     
     has_many :pages
+    belongs_to :author
     
     attr_accessible :name
     

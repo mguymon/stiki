@@ -9,6 +9,13 @@ module Stiki
     
     def create
       @space = Space.new(params[:space])
+      
+      if Stiki.authenticate_by == :devise
+        author = Author.new
+        author.user = self.send( "current_#{Stiki::Helper.user_model_name}".to_sym )
+        @space.author = author
+      end
+      
       unless @space.save
         flash[:error] = "Error creating new Space"
       end

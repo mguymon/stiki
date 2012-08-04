@@ -7,9 +7,9 @@ module Stiki::Authenticate::Devise
       auth_required = Stiki.auth_mapping[base.controller_name.to_sym]
       if auth_required
         if auth_required == :all
-          base.before_filter "authenticate_#{Stiki.user_class.constantize.name.underscore}!".to_sym
+          base.before_filter "authenticate_#{Stiki::Helper.user_model_name}!".to_sym
         else
-          base.before_filter "authenticate_#{Stiki.user_class.constantize.name.underscore}!".to_sym, auth_required
+          base.before_filter "authenticate_#{Stiki::Helper.user_model_name}!".to_sym, auth_required
         end
       end
     else

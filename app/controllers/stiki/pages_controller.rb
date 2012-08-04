@@ -28,6 +28,11 @@ module Stiki
     def create
       @page = Page.new(params[:page])
       @page.space = @space
+      
+      if Stiki.authenticate_by == :devise
+        @page.user = send.send( "current_#{Stiki::Helper.user_model_name}".to_sym )
+      end
+      
       if @page.save
         redirect_to stiki.space_page_path(@space, @page)
       else
