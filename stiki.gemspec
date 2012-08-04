@@ -11,16 +11,15 @@ Gem::Specification.new do |s|
   s.email       = ["michael.guymon@gmail.com"]
   s.homepage    = "https://github.com/mguymon/stiki"
   s.summary     = "The Icky Stiki Wiki"
-  s.description = "TODO: Description of Stiki."
+  s.description = "A simple wiki Rails engine"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["{test,spec}/**/*"]
 
   s.add_dependency "rails", "~> 3.2.1"
   s.add_dependency "friendly_id", "~> 4.0.1"
   s.add_dependency 'twitter-bootstrap-rails', "~> 2.1.1"
   s.add_dependency 'redcarpet', "~> 2.1.1"
-  # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "devise", "~> 2.0.1"
   s.add_development_dependency "cancan", "~> 1.6.1"
