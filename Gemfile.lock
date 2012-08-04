@@ -40,6 +40,7 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
+    cancan (1.6.8)
     commonjs (0.2.6)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
@@ -141,7 +142,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  devise (~> 2.0.4)
+  cancan (~> 1.6.1)
+  devise (~> 2.0.1)
   factory_girl_rails (~> 3.6.0)
   jquery-rails
   rspec-rails (~> 2.11.0)

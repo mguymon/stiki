@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Stiki::VERSION
   s.authors     = ["Michael Guymon"]
   s.email       = ["michael.guymon@gmail.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "https://github.com/mguymon/stiki"
   s.summary     = "The Icky Stiki Wiki"
   s.description = "TODO: Description of Stiki."
 
@@ -22,7 +22,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'redcarpet', "~> 2.1.1"
   # s.add_dependency "jquery-rails"
 
-  s.add_development_dependency "devise", "~> 2.0.4"
+  s.add_development_dependency "devise", "~> 2.0.1"
+  s.add_development_dependency "cancan", "~> 1.6.1"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails", "~> 2.11.0"
   s.add_development_dependency 'factory_girl_rails', "~> 3.6.0"
