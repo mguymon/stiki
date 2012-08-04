@@ -6,7 +6,7 @@ Stiki is a simple Rails Engine for sites that use twitter-bootstrap.
 
 In Rails 3, add this to your Gemfile and run the bundle command.
 
-  gem "cancan"
+  gem "stiki"
 
 == Getting Started
 
