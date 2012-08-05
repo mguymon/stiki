@@ -37,6 +37,9 @@ To configure Stiki, create a config in config/initializers/stiki.rb
     # Optional user class, required for author and devise
     stiki.user_class = 'User' 
 
+    # Method to be called on user_class to display user name. Defaults to to_s
+    stiki.user_name_via = :user_name
+
     # Optional, use devise for authentication
     stiki.authenticate_by = :devise 
     stiki.authenticate_pages = :all   # other options are :only => [actions]  or :except => [actions]
