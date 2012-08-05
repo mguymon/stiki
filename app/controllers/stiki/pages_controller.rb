@@ -41,7 +41,7 @@ module Stiki
       end
       
       if @page.save
-        redirect_to stiki.space_page_path(@space, @page)
+        redirect_to stiki_routes.space_page_path(@space, @page)
       else
         flash[:error] = "Error creating Page"
         render "stiki/pages/new"
@@ -60,7 +60,7 @@ module Stiki
       end
       
       if @page.save
-        redirect_to stiki.space_page_path(@space, @page)
+        redirect_to stiki_routes.space_page_path(@space, @page)
       else
         flash[:error] = "Error editing Page"
         render "stiki/pages/edit"
@@ -71,7 +71,7 @@ module Stiki
     def get_space
       @space = Space.find( params[:space_id] )
       if @space.nil?
-        redirect_to stiki.spaces_path
+        redirect_to stiki_routes.spaces_path
       end
     end
   end

@@ -21,7 +21,7 @@ module Stiki
         flash[:error] = "Error creating new Space"
       end
       
-      redirect_to stiki.spaces_path
+      redirect_to stiki_routes.spaces_path
     end
   end
 end

@@ -3,7 +3,7 @@
     <div class="span8">
       <div class="row-fluid">
         <div class="hero-unit">
-          <h2><%= link_to space.name, stiki.space_pages_path(space) %></h2>
+          <h2><%= link_to space.name, stiki_routes.space_pages_path(space) %></h2>
           <h4>Created by <%= user_name( space.creator ) %></h4>
         </div>
       </div>
@@ -13,7 +13,7 @@
 <div class="row-fluid">
   <div class="span8">
     <div class="row-fluid">
-      <%= form_tag( stiki.spaces_path, :html => {:class => 'form-horizontal'} ) do |f| %>
+      <%= form_tag( stiki_routes.spaces_path, :html => {:class => 'form-horizontal'} ) do |f| %>
         <fieldset class="well">
           <div class="control-group">
               <%= label_tag 'name', 'Name', :class => "control-label" %>

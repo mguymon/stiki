@@ -14,9 +14,9 @@
                     <div class="btn-group">
                       <button class="btn dropdown-toggle" data-toggle="dropdown"><%= @space.name %> <span class="caret"></span></button>
                       <ul class="dropdown-menu">
-                        <li><a href="<%= stiki.spaces_path %>">Spaces</a></li>
+                        <li><a href="<%= stiki_routes.spaces_path %>">Spaces</a></li>
                         <%- @spaces.each do |space| %>
-                          <li><a href="<%= stiki.space_pages_path(space) %>"><%= space.name %></a></li>
+                          <li><a href="<%= stiki_routes.space_pages_path(space) %>"><%= space.name %></a></li>
                         <% end -%>
                       </ul>
                     </div>
@@ -29,7 +29,7 @@
                       <button class="btn dropdown-toggle" data-toggle="dropdown"><%= @page.title %> <span class="caret"></span></button>
                       <ul class="dropdown-menu">
                         <%- @pages.each do |page| %>
-                          <li><a href="<%= stiki.space_page_path(@space,page) %>"><%= page.title %></a></li>
+                          <li><a href="<%= stiki_routes.space_page_path(@space,page) %>"><%= page.title %></a></li>
                         <% end -%>
                       </ul>
                     </div>
@@ -46,7 +46,7 @@
       </div>
       <div class="row-fluid">
         <div class="span11 well">
-          <%= link_to 'Edit', stiki.edit_space_page_path(@space,@page), :class => 'btn btn-primary' %>
+          <%= link_to 'Edit', stiki_routes.edit_space_page_path(@space,@page), :class => 'btn btn-primary' %>
         </div>
       </div>
     </div>

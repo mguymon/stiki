@@ -1,6 +1,6 @@
 module Stiki
   module ApplicationHelper
-    def stiki
+    def stiki_routes
       Stiki::Engine.routes.url_helpers
     end
     
