@@ -2,9 +2,6 @@ require 'spec_helper'
 require 'stiki/spaces_controller'
 
 describe Stiki::SpacesController do
-  before do
-    Stiki.reset()
-  end
   
   describe "GET #index" do
     before do

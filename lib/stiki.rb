@@ -14,15 +14,7 @@ module Stiki
     
     mattr_accessor :authorize_by
     
-    def self.reset
-      @@authenticate_by = false
-      @@authorize_by = false
-      @@authenticate_pages = nil
-      @@authenticate_spaces = nil
-      @@auth_mapping = {}
-    end
-    
-    def self.replay
+    def self.reload
       config( &@@config_blk ) if @@config_blk
     end
     

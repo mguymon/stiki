@@ -16,7 +16,7 @@ describe Stiki::PagesController do
   describe "GET #index" do
     before do
       @space = FactoryGirl.create(:space)
-      get :index, :space_id => @space.id, :use_route => :stiki
+      get :index, :space_id => @space.slug, :use_route => :stiki
     end
     
     it { response.should be_success }
@@ -29,9 +29,10 @@ describe Stiki::PagesController do
     before do
       @page = FactoryGirl.create(:page)
       @space = @page.space
-      get :show, :space_id => @space.id, :id => @page.id, :use_route => :stiki
+      get :show, :space_id => @space.slug, :id => @page.slug, :use_route => :stiki
     end
     
+    it { should_not set_the_flash }
     it { response.should be_success }
     it { should assign_to(:space) }
     it { should assign_to(:page) }
@@ -42,9 +43,10 @@ describe Stiki::PagesController do
   describe "GET #new" do
     before do
       @space = FactoryGirl.create(:space)
-      get :new, :space_id => @space.id, :use_route => :stiki
+      get :new, :space_id => @space.slug, :use_route => :stiki
     end
     
+    it { should_not set_the_flash }
     it { response.should be_success }
     it { should assign_to(:space) }
     it { should assign_to(:page) }
@@ -55,7 +57,7 @@ describe Stiki::PagesController do
     context "success" do
       before do
         @space = FactoryGirl.create(:space)
-        post :create, :space_id => @space.id, :page => { :title => 'title123', :body => 'body123' }, :use_route => :stiki
+        post :create, :space_id => @space.slug, :page => { :title => 'title123', :body => 'body123' }, :use_route => :stiki
       end
       
       it { response.should be_redirect }
@@ -64,7 +66,7 @@ describe Stiki::PagesController do
     context "error" do
       before do
         @space = FactoryGirl.create(:space)
-        post :create, :space_id => @space.id, :use_route => :stiki
+        post :create, :space_id => @space.slug, :use_route => :stiki
       end
       
       it { response.should be_success }
