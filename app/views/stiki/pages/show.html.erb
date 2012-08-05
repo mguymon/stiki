@@ -46,17 +46,26 @@
       </div>
       <div class="row-fluid">
         <div class="span11 well">
-          <%= link_to 'Edit', stiki_routes.edit_space_page_path(@space,@page), :class => 'btn btn-primary' %>
+          <div class="span2">
+            <%= link_to 'Edit', stiki_routes.edit_space_page_path(@space,@page), :class => 'btn btn-primary' %>
+          </div>
+          <div class="span2">
+            <%= link_to 'Delete', { :action => "delete", :id => @page.slug }, :confirm => "Are you sure you want to remove this Wiki Page?", :class => 'btn' %>
+          </div>
         </div>
       </div>
     </div>
     <div class="span3">
       <div class="row-fluid">
         <div class="span12 well">
-          <ul class=" nav nav-list">
+          <ul class="nav nav-list author">
             <li class="nav-header">Contributors</li>
             <%- @page.authors.each do |author| %>
-              <li><%= user_name( author ) %> <%= "(author)" if author.creator %></li>
+              <li>
+                <%= user_name( author ) %> 
+                <%= "<span class='badge badge-success' title='Author'>A</span>".html_safe if author.creator %>
+                <%= "<span class='badge badge-info' title='Last Edit'>L</span>".html_safe if author.last_edit %></li>
+              </li>
             <% end -%>
           </ul>
         <div>

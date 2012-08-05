@@ -20,5 +20,14 @@ module Stiki
     
     validates :title, :uniqueness => {:scope => :space_id}, :presence => true
     validates :body, :presence => true
+    
+    def mark_badges
+      if authors.size > 1
+        # XXX: need revisions to determine last edit and most edits
+        #last = authors.order( 'updated_at DESC' ).first
+        #authors.where( ["#{Stiki::Author.table_name}.id != ?", last.id] ).update_all( :last_edit => false );
+        #authors.where( ["#{Stiki::Author.table_name}.id = ?", last.id] ).update_all( :last_edit => true );
+      end
+    end
   end
 end

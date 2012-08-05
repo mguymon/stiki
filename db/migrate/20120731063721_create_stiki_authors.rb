@@ -5,6 +5,7 @@ class CreateStikiAuthors < ActiveRecord::Migration
       t.integer :authorable_id
       t.string  :authorable_type
       t.boolean :creator
+      t.boolean :last_edit
       t.timestamps
     end
     

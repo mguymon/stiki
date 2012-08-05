@@ -14,10 +14,16 @@ module Stiki
       @spaces = Space.all
       @pages = @space.pages
       
-      @page = Page.find( params[:id])
-      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-        :autolink => true, :space_after_headers => true)
-      @markup = markdown.render( @page.body ).html_safe 
+      @page = Page.find_by_slug( params[:id] )
+      
+      if @page.nil?
+        flash[:error] = "Wiki Pages does not exist: #{params[:id]}"
+        redirect_to stiki_routes.space_pages_path(@space)
+      else
+        markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+          :autolink => true, :space_after_headers => true)
+        @markup = markdown.render( @page.body ).html_safe 
+      end
     end
     
     def new
@@ -60,6 +66,7 @@ module Stiki
       end
       
       if @page.save
+        @page.mark_badges
         redirect_to stiki_routes.space_page_path(@space, @page)
       else
         flash[:error] = "Error editing Page"
@@ -69,8 +76,9 @@ module Stiki
     
     protected
     def get_space
-      @space = Space.find( params[:space_id] )
+      @space = Space.find_by_slug( params[:space_id] )
       if @space.nil?
+        flash[:error] = "Wiki Space does not exist: #{params[:space_id]}"
         redirect_to stiki_routes.spaces_path
       end
     end

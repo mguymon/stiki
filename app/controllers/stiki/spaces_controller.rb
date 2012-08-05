@@ -7,6 +7,8 @@ module Stiki
       @space = Space.new
     end
     
+    # def show handled by PageController#index
+    
     def create
       @space = Space.new(params[:space])
       

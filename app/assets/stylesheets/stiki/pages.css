@@ -10,5 +10,13 @@
         font-size: 32px; 
       }
     }
+    
+    .author {
+      
+      .badge {
+        margin-left: 3px; 
+      }
+    }
   }
+  
 }
