@@ -6,7 +6,7 @@ require 'stiki/model/map_author'
 module Stiki
   
     mattr_accessor :user_class
-    mattr_accessor :user_identifier
+    mattr_accessor :user_name_via
     mattr_accessor :authenticate_by
     mattr_accessor :authenticate_pages
     mattr_accessor :authenticate_spaces
@@ -21,15 +21,21 @@ module Stiki
       @@authenticate_spaces = nil
       @@auth_mapping = {}
     end
-    Stiki.reset()
+    
+    def self.replay
+      config( &@@config_blk ) if @@config_blk
+    end
     
     def self.config(&blk)
+      @@config_blk = blk
       
       yield self
       
       if user_class
-        unless user_identifier
-          user_identifier = "to_s"
+        unless @@user_name_via.nil?
+          @@user_name_via = @@user_name_via.to_sym
+        else
+          @@user_name_via = :to_s
         end
         
         ::Stiki::Author.send(:include, Stiki::Model::MapAuthor)

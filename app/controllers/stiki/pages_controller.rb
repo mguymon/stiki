@@ -6,10 +6,14 @@ module Stiki
     before_filter :get_space
     
     def index
+      @spaces = Space.all
       @pages = @space.pages
     end
     
     def show
+      @spaces = Space.all
+      @pages = @space.pages
+      
       @page = Page.find( params[:id])
       markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
         :autolink => true, :space_after_headers => true)
@@ -30,7 +34,10 @@ module Stiki
       @page.space = @space
       
       if Stiki.authenticate_by == :devise
-        @page.user = send.send( "current_#{Stiki::Helper.user_model_name}".to_sym )
+        author = Author.new
+        author.user = self.send( "current_#{Stiki::Helper.user_model_name}".to_sym )
+        author.creator = true
+        @page.authors << author
       end
       
       if @page.save
@@ -44,7 +51,15 @@ module Stiki
     def update
       @page = Page.find( params[:id] )
       
-      if @page.update_attributes( params[:page] )
+      @page.attributes = params[:page]
+      
+      if Stiki.authenticate_by == :devise
+        author = Author.new
+        author.user = self.send( "current_#{Stiki::Helper.user_model_name}".to_sym )
+        @page.authors << author
+      end
+      
+      if @page.save
         redirect_to stiki.space_page_path(@space, @page)
       else
         flash[:error] = "Error editing Page"

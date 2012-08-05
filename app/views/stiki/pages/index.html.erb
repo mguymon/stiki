@@ -1,6 +1,7 @@
 <div class="row-fluid">
-  <div class="span8">
-    <div class="row-fluid well">
+  <div class="span8 well">
+      
+      <h3>Pages</h3>
       <ul class="nav nav-list">
         <%- @pages.each do |page| %>
           <li>
@@ -8,13 +9,25 @@
           </li>
         <% end -%>
       </ul>
-    </div>
+  </div>
+  <div class="span3">
+    <ul class="breadcrumb">
+      <li>
+        <div class="btn-group">
+          <button class="btn dropdown-toggle" data-toggle="dropdown">Change Space<span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="<%= stiki.spaces_path %>">Spaces</a></li>
+            <%- @spaces.each do |space| %>
+              <li><a href="<%= stiki.space_pages_path(space) %>"><%= space.name %></a></li>
+            <% end -%>
+          </ul>
+        </div>
+      </li>      
+    </ul>
   </div>
 </div>
 <div class="row-fluid">
-  <div class="span8">
-    <div class="row-fluid well">
+  <div class="span8 well">
       <%= link_to 'Create Page', stiki.new_space_page_path(@space) %>  
-    </div>
   </div>
 </div>

@@ -6,7 +6,8 @@ module Stiki
     friendly_id :name, use: :slugged
     
     has_many :pages
-    belongs_to :author
+    has_many :authors, :as => :authorable
+    has_one :creator, :class_name => 'Author', :conditions => "creator = true", :as => :authorable
     
     attr_accessible :name
     

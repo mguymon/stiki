@@ -5,7 +5,6 @@ class CreateStikiPages < ActiveRecord::Migration
       t.string :slug
       t.text :body
       t.integer :parent_id
-      t.integer :author_id
       t.integer :space_id
 
       t.timestamps

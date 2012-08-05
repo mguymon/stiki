@@ -66,6 +66,10 @@ class Stiki::ApplicationController
     
   end
   
+  def current_author
+    
+  end
+  
   def authenticate_author!
     
   end

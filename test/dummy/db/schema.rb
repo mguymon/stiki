@@ -15,16 +15,20 @@ ActiveRecord::Schema.define(:version => 20120731063721) do
 
   create_table "stiki_authors", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "authorable_id"
+    t.string   "authorable_type"
+    t.boolean  "creator"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
+
+  add_index "stiki_authors", ["authorable_id", "authorable_type"], :name => "index_stiki_authors_on_authorable_id_and_authorable_type"
 
   create_table "stiki_pages", :force => true do |t|
     t.string   "title"
     t.string   "slug"
     t.text     "body"
     t.integer  "parent_id"
-    t.integer  "author_id"
     t.integer  "space_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

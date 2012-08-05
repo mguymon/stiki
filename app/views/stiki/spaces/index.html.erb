@@ -1,13 +1,14 @@
 <%- @spaces.each do |space| %>
-<div class="row-fluid">
-  <div class="span8">
-    <div class="row-fluid">
-      <div class="hero-unit">
-        <h2><%= link_to space.name, stiki.space_pages_path(space) %></h2>
+  <div class="row-fluid">
+    <div class="span8">
+      <div class="row-fluid">
+        <div class="hero-unit">
+          <h2><%= link_to space.name, stiki.space_pages_path(space) %></h2>
+          <h4>Created by <%= user_name( space.creator ) %></h4>
+        </div>
       </div>
     </div>
   </div>
-</div>
 <% end -%>
 <div class="row-fluid">
   <div class="span8">

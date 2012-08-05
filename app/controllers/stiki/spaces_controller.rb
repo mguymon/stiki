@@ -13,7 +13,8 @@ module Stiki
       if Stiki.authenticate_by == :devise
         author = Author.new
         author.user = self.send( "current_#{Stiki::Helper.user_model_name}".to_sym )
-        @space.author = author
+        author.creator = true
+        @space.authors << author
       end
       
       unless @space.save
