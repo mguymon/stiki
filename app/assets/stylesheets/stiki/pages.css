@@ -11,10 +11,42 @@
       }
     }
     
+    .page-list {
+      cursor:pointer;
+      
+      li {
+        padding: 2px;      
+      
+        a {
+          float: left; 
+          font-size: 18px;
+        }
+      }
+    }
+    
+    .list:hover {
+      color: green;
+    }
+    
+    .title {
+      h1 {
+        .icon-chevron-left {
+          position: relative;
+          top: 12px;
+        }
+      }
+    }
+    
     .author {
       
       .badge {
         margin-left: 3px; 
+      }
+    }
+    
+    .delete {
+      form {
+        margin: 0; 
       }
     }
   }

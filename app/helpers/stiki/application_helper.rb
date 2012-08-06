@@ -4,8 +4,10 @@ module Stiki
       Stiki::Engine.routes.url_helpers
     end
     
-    def use_auth?
-      Stiki.authenticate_by
+    def has_access( action, model )
+      if Stiki.authorize_by == :cancan
+        can? action, model
+      end
     end
     
     def user_name( author )

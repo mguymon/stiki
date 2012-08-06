@@ -74,6 +74,14 @@ module Stiki
       end
     end
     
+    def destroy
+      @page = Page.find( params[:id] )
+      
+      @page.destroy
+      
+      redirect_to stiki_routes.space_pages_path(@space)
+    end
+    
     protected
     def get_space
       @space = Space.find_by_slug( params[:space_id] )

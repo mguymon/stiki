@@ -25,5 +25,18 @@ module Stiki
       
       redirect_to stiki_routes.spaces_path
     end
+    
+    def destroy
+      @space = Space.find( params[:id] )
+      
+      if @space.pages.size > 0 
+        flash[:error] = "Cannot delete a Wiki Space that has Wiki Pages"
+      else
+        @space.destroy
+        flash[:info] = "The Space #{@space.name} has been deleted"
+      end
+      
+      redirect_to stiki_routes.spaces_path
+    end
   end
 end
