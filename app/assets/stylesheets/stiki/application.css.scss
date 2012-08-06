@@ -2,3 +2,16 @@
 @import "authors";
 @import "pages";
 @import "spaces";
+
+.stiki {
+  .breadcrumb {
+    
+    margin-bottom: 0;
+    
+    .btn-group {
+      li {
+        display: block; 
+      }
+    }
+  }
+}

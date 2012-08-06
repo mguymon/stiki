@@ -18,6 +18,7 @@
                       <button class="btn dropdown-toggle" data-toggle="dropdown"><%= @space.name %> <span class="caret"></span></button>
                       <ul class="dropdown-menu">
                         <li><a href="<%= stiki_routes.spaces_path %>">All Spaces</a></li>
+                        <li class="divider"></li>
                         <%- @spaces.each do |space| %>
                           <li><a href="<%= stiki_routes.space_pages_path(space) %>"><%= space.name %></a></li>
                         <% end -%>
@@ -31,6 +32,8 @@
                     <div class="btn-group">
                       <button class="btn dropdown-toggle" data-toggle="dropdown"><%= @page.title %> <span class="caret"></span></button>
                       <ul class="dropdown-menu">
+                        <li><a href="<%= stiki_routes.space_pages_path(@space) %>">All Pages</a></li>
+                        <li class="divider"></li>
                         <%- @pages.each do |page| %>
                           <li><a href="<%= stiki_routes.space_page_path(@space,page) %>"><%= page.title %></a></li>
                         <% end -%>
@@ -51,7 +54,7 @@
         <div class="span12 well">
           <%- if has_access( :update, @page ) %>
             <div class="span2">
-              <%= link_to 'Edit', stiki_routes.edit_space_page_path(@space,@page), :class => 'btn btn-primary' %>
+              <%= link_to 'Edit', stiki_routes.edit_space_page_path(@space,@page), :class => 'btn btn-large btn-primary' %>
             </div>
           <% end -%>
           <%- if has_access( :delete, @page ) %>
