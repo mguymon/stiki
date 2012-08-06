@@ -4,6 +4,6 @@ module Stiki
     
     belongs_to :authorable, :polymorphic => true
     
-    validates :creator, :uniqueness => {:scope => :authorable_id}
+    validates :creator, :uniqueness => {:scope => [:authorable_id, :authorable_type] }
   end
 end
