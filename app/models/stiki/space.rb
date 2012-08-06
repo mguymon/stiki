@@ -7,7 +7,7 @@ module Stiki
     
     has_many :pages
     has_many :authors, :as => :authorable
-    has_one :creator, :class_name => 'Author', :conditions => "creator = true", :as => :authorable
+    has_one :creator, :class_name => 'Author', :conditions => ["creator = ?", true], :as => :authorable
     
     attr_accessible :name
     
