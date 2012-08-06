@@ -1,15 +1,17 @@
 <%- @spaces.each do |space| %>
   <div class="row-fluid">
-    <div class="span8">
-      <div class="row-fluid">
-        <div class="hero-unit">
-          <h2><%= link_to space.name, stiki_routes.space_pages_path(space) %></h2>
-          <h4 style="float:left">Created by <%= user_name( space.creator ) %></h4>
-          <%- if has_access( :update, @page ) %>
-            <%= button_to "X", stiki_routes.space_path( space ), :method => :delete, 
-                 :class => 'close', :confirm => 'Are you sure you want to delete this Wiki Space?' %>
-          <% end -%>
-        </div>
+    <div class="span8 well">
+      <div style="float:right">
+        <%- if has_access( :update, @page ) %>
+          <%= button_to "X", stiki_routes.space_path( space ), :method => :delete, 
+               :class => 'close', :confirm => 'Are you sure you want to delete this Wiki Space?' %>
+        <% end -%>
+      </div>
+      <div style="float:left">
+        <h2 ><%= link_to space.name, stiki_routes.space_pages_path(space) %></h2>
+        <% if space.creator %>
+          <h4 >Created by <%= user_name( space.creator ) %></h4>
+        <% end %>
       </div>
     </div>
   </div>

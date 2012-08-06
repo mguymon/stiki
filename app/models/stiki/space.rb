@@ -12,5 +12,11 @@ module Stiki
     attr_accessible :name
     
     validates :name, :uniqueness => true, :presence => true
+    after_validation :move_friendly_id_error_to_name
+
+    protected
+    def move_friendly_id_error_to_name
+      errors.add :name, *errors.delete(:friendly) if errors[:friendly].present?
+    end
   end
 end

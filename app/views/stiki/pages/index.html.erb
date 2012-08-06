@@ -12,6 +12,7 @@
                 <button class="btn dropdown-toggle" data-toggle="dropdown">Change Space<span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   <li><a href="<%= stiki_routes.spaces_path %>">All Spaces</a></li>
+                  <li class="divider"></li>
                   <%- @spaces.each do |space| %>
                     <li><a href="<%= stiki_routes.space_pages_path(space) %>"><%= space.name %></a></li>
                   <% end -%>

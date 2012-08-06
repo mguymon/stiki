@@ -29,10 +29,10 @@
     }
     
     .title {
-      h1 {
+      a {
         .icon-chevron-left {
           position: relative;
-          top: 13px;
+          top: 9px;
         }
       }
     }

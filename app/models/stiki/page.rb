@@ -20,7 +20,8 @@ module Stiki
     
     validates :title, :uniqueness => {:scope => :space_id}, :presence => true
     validates :body, :presence => true
-    
+    after_validation :move_friendly_id_error_to_name
+
     def mark_badges
       if authors.size > 1
         # XXX: need revisions to determine last edit and most edits
@@ -28,6 +29,11 @@ module Stiki
         #authors.where( ["#{Stiki::Author.table_name}.id != ?", last.id] ).update_all( :last_edit => false );
         #authors.where( ["#{Stiki::Author.table_name}.id = ?", last.id] ).update_all( :last_edit => true );
       end
+    end
+    
+    protected
+    def move_friendly_id_error_to_name
+      errors.add :title, *errors.delete(:friendly_id) if errors[:friendly_id].present?
     end
   end
 end
