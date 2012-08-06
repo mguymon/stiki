@@ -17,7 +17,9 @@ module Stiki
     end
     
     def user_name( author )
-      author.user.send( Stiki.user_name_via ) if author && author.user
+      if Stiki.user_name_via 
+        author.user.send( Stiki.user_name_via ) if author && author.user
+      end
     end
   end
 end
