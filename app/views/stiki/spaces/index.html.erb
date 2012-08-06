@@ -15,12 +15,14 @@
   </div>
 <% end -%>
 <%- if has_access( :create, Stiki::Space ) %>
+  <%- if javascript_enabled %>
   <div class="row-fluid create-space">
     <div class="span8 well">
       <a href="#" class="create-space-trigger">Create New Space</a>
     </div>
   </div>
-  <div class="row-fluid create-space" style="display:none">
+  <% end -%>
+  <div class="row-fluid create-space" style="<%= 'display:none' if javascript_enabled %>">
     <div class="span8">
       <div class="row-fluid">
         <%= form_tag( stiki_routes.spaces_path, :class => 'form-horizontal' ) do |f| %>
@@ -41,12 +43,13 @@
       </div>
     </div>
   </div>
-  
-  <script>
-    $(function() {
-      $('.create-space-trigger').click( function() {
-        $('.create-space').slideToggle();
+  <%- if javascript_enabled %>
+    <script type="text/javascript">
+      $(function() {
+        $('.create-space-trigger').click( function() {
+          $('.create-space').slideToggle();
+        });
       });
-    });
-  </script>
+    </script>
+  <% end -%>
 <% end -%>

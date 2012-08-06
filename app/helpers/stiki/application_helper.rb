@@ -7,7 +7,13 @@ module Stiki
     def has_access( action, model )
       if Stiki.authorize_by == :cancan
         can? action, model
+      else
+        true
       end
+    end
+    
+    def javascript_enabled
+      Stiki.javascript_enabled == true
     end
     
     def user_name( author )
