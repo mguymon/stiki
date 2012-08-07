@@ -6,7 +6,13 @@ module Stiki
     friendly_id :name, use: :slugged
     
     has_many :pages
-    has_many :authors, :as => :authorable
+    has_many :authors, :as => :authorable do
+      def <<(*authors)
+        # prevent duplicate authors
+        existing_users = proxy_association.owner.authors.map(&:user_id)
+        super( authors.select { |auth| !existing_users.include?( auth.user_id ) } )
+      end
+    end
     has_one :creator, :class_name => 'Author', :conditions => ["creator = ?", true], :as => :authorable
     
     attr_accessible :name

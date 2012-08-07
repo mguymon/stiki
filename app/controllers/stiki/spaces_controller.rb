@@ -8,6 +8,9 @@ module Stiki
     end
     
     # def show handled by PageController#index
+    def edit
+      @space = Space.find(params[:id])
+    end
     
     def create
       @space = Space.new(params[:space])
@@ -26,6 +29,26 @@ module Stiki
       redirect_to stiki_routes.spaces_path
     end
     
+    def update
+      @space = Space.find(params[:id])
+      @space.attributes = params[:space]
+      
+      if Stiki.authenticate_by == :devise
+        author = Author.new
+        author.user = self.send( "current_#{Stiki::Helper.user_model_name}".to_sym )
+        @space.authors << author
+      end
+      
+      if @space.save
+        flash[:notice] = "Space Updated"
+        
+        redirect_to stiki_routes.spaces_path
+      else
+        flash[:error] = "Error creating new Space"
+        render :template => 'stiki/spaces/edit'
+      end
+    end
+    
     def destroy
       @space = Space.find( params[:id] )
       
@@ -33,7 +56,7 @@ module Stiki
         flash[:error] = "Cannot delete a Wiki Space that has Wiki Pages"
       else
         @space.destroy
-        flash[:info] = "The Space #{@space.name} has been deleted"
+        flash[:notice] = "The Space #{@space.name} has been deleted"
       end
       
       redirect_to stiki_routes.spaces_path
