@@ -4,6 +4,7 @@ require File.expand_path("../../test/dummy/config/environment.rb",  __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'shoulda-matchers'
+require 'cancan'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -38,8 +39,7 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
-  
+  # config.order = "random"
   
   config.include FactoryGirl::Syntax::Methods
 end
@@ -47,6 +47,27 @@ end
 # Devise does not like modules 
 class Author < ActiveRecord::Base
     self.table_name = "stiki_authors"
+end
+
+class Ability
+  include CanCan::Ability
+
+  def initialize(user)
+    # Define abilities for the passed in user here. For example:
+    #
+    author ||= Author.new # guest user (not logged in)
+  
+    can :manage, Stiki::Page
+    can :manage, Stiki::Space
+    can :index,  Stiki::Author
+    
+  end
+end
+
+class ActionView::TestCase::TestController    
+    def current_user
+      Author.new
+    end
 end
 
 
@@ -67,11 +88,15 @@ class Stiki::ApplicationController
   end
   
   def current_author
-    
+    Author.new
   end
   
   def authenticate_author!
     
+  end
+  
+  def current_ability
+    @current_ability ||= Ability.new(current_author)
   end
 
 end

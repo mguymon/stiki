@@ -9,6 +9,7 @@ describe Stiki do
       Stiki.config do |stiki|
         stiki.authenticate_by = :devise
         stiki.user_class = 'Author'
+        stiki.user_name_via = :to_s
         stiki.authenticate_pages = {:only =>  [:blue, :green, :orange ] }
         stiki.authenticate_spaces = {:only => [:new, :create, :edit, :update] }
       end
@@ -18,7 +19,7 @@ describe Stiki do
       Stiki.authenticate_by.should eql :devise
     end
     
-    it "should set default user_name_via" do
+    it "should set user_name_via" do
       Stiki.user_name_via.should eql :to_s
     end
     

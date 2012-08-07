@@ -6,6 +6,7 @@ describe Stiki::PagesController do
   before do
     Stiki.config do |stiki|
       stiki.user_class = 'Author'
+      stiki.authorize_by = false
     end
   end
   

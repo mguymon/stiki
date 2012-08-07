@@ -9,7 +9,7 @@ describe Stiki::Authenticate::Devise do
         stiki.authenticate_by = :devise
         stiki.user_class = 'Author'
         stiki.authenticate_pages = :all
-        stiki.authenticate_spaces = [:new, :create, :edit, :update]
+        stiki.authenticate_spaces = {:only => [:new, :create, :edit, :update]}
       end
     end
     
