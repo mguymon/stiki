@@ -48,8 +48,8 @@ To configure Stiki, create a config in config/initializers/stiki.rb
     # Optional, use cancan for authorization
     stiki.authorize_by = :cancan
     
-    # Optional, enable jQuery javascript
-    javascript_enabled = true
+    # Optional, disable javascript
+    javascript_enabled = false
   end
   
 === Reloading Stiki in the development environment

@@ -24,7 +24,7 @@
       <%- if javascript_enabled %>
       <div class="row-fluid create-space">
         <div class="span8 well">
-          <a href="#" class="create-space-trigger">Create New Space</a>
+          <a href="#" class="btn btn-success btn-large create-space-trigger">Create New Space</a>
         </div>
       </div>
       <% end -%>
@@ -51,9 +51,9 @@
       </div>
       <%- if javascript_enabled %>
         <script type="text/javascript">
-          $(function() {
-            $('.create-space-trigger').click( function() {
-              $('.create-space').slideToggle();
+          jQuery(function() {
+            jQuery('.create-space-trigger').click( function() {
+              jQuery('.create-space').slideToggle();
             });
           });
         </script>

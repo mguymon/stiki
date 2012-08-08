@@ -21,6 +21,8 @@ module Stiki
     def self.config(&blk)
       @@config_blk = blk
       
+      @@javascript_enabled = true
+      
       yield self
       
       if user_class

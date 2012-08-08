@@ -7,16 +7,16 @@
     .space {
         .action {
           float: right; 
-        
-          .update {
-            margin-right: 5px; 
-          }
-          
-          .delete {
-            border: 0;
-            background-color: white;
-          }
         }
+        .update {
+          margin-right: 5px; 
+        }
+        
+        .delete {
+          border: 0;
+          background-color: white;
+        }
+      
       
       
       .title {
