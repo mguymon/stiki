@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    stiki (0.1.5)
+    stiki (0.1.6)
       friendly_id (~> 4.0.1)
       rails (~> 3.2.1)
       redcarpet (~> 2.1.1)
