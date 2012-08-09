@@ -84,14 +84,12 @@
             </div>
             <div class="wiki-cheatsheet">
                <h4><a  data-toggle="modal" href="#cheatsheet">Wiki Syntax</a></h4>
-               <div id="cheatsheet" class="<%= 'modal' if Stiki.javascript_enabled %>" style="<%= 'display:none' if Stiki.javascript_enabled %>">
-                <%- if Stiki.javascript_enabled %>
+               <div id="cheatsheet" class="modal" style="display:none">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
                     <h3>Markdown Wiki Syntax</h3>
                   </div>
                   <div class="modal-body">
-                <% end -%>
 <pre>
 # Header 1 
 ## Header 2 
@@ -124,14 +122,11 @@ For an image:
 ### Horizontal rules
 
 </pre>
-                  <%- if Stiki.javascript_enabled %>
                     </div>
                     <div class="modal-footer">
                       <a href="#" class="btn" data-dismiss="modal">Close</a>
                     </div>
-                  <% end -%>
                </div>
-              <% if Stiki.javascript_enabled %>
                 <script type="text/javascript">
                 
               $('.cheatsheet').modal();
@@ -141,7 +136,6 @@ For an image:
                     });
                   });
                 </script>
-              <% end %>
             </div>
           <div>
         </div>

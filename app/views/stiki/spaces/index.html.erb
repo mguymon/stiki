@@ -21,14 +21,12 @@
       </div>
     <% end -%>
     <%- if has_access( :create, Stiki::Space ) %>
-      <%- if javascript_enabled %>
       <div class="row-fluid create-space">
         <div class="span8 well">
           <a href="#" class="btn btn-success btn-large create-space-trigger">Create New Space</a>
         </div>
       </div>
-      <% end -%>
-      <div class="row-fluid create-space" style="<%= 'display:none' if javascript_enabled %>">
+      <div class="row-fluid create-space" style="display:none">
         <div class="span8">
           <div class="row-fluid">
             <%= form_tag( stiki_routes.spaces_path, :class => 'form-horizontal' ) do |f| %>
@@ -49,7 +47,6 @@
           </div>
         </div>
       </div>
-      <%- if javascript_enabled %>
         <script type="text/javascript">
           jQuery(function() {
             jQuery('.create-space-trigger').click( function() {
@@ -57,6 +54,5 @@
             });
           });
         </script>
-      <% end -%>
     <% end -%>
 </div>

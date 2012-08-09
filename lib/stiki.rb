@@ -12,7 +12,6 @@ module Stiki
     mattr_accessor :authenticate_spaces
     mattr_accessor :auth_mapping
     mattr_accessor :authorize_by
-    mattr_accessor :javascript_enabled
     
     def self.reload
       config( &@@config_blk ) if @@config_blk
@@ -20,8 +19,6 @@ module Stiki
     
     def self.config(&blk)
       @@config_blk = blk
-      
-      @@javascript_enabled = true
       
       yield self
       
