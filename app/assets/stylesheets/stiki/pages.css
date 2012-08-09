@@ -36,15 +36,6 @@
       color: green;
     }
     
-    .title {
-      a {
-        .icon-chevron-left {
-          position: relative;
-          top: 9px;
-        }
-      }
-    }
-    
     .author {
       
       .badge {

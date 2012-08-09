@@ -2,7 +2,8 @@
   <div class="page">
     <div class="row-fluid">
       <div class="span10 well">
-         <div class="span9"> 
+         <div class="span9 title"> 
+          <%= link_to '<i class="icon-chevron-left"></i>'.html_safe, stiki_routes.spaces_path(), :style => "float:left" %>
           <h1><%= @space.name %> Pages</h1>
          </div>
         <div class="span3">
