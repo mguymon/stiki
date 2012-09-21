@@ -47,10 +47,16 @@ To configure Stiki, create a config in config/initializers/stiki.rb
 
     # Optional, use cancan for authorization
     stiki.authorize_by = :cancan
-    
-    # Optional, disable javascript
-    javascript_enabled = false
   end
+
+=== Loading Stiki Stylesheets
+
+Latest Rails version does not appear to pick up the css from Stiki automatically, so you will likely have
+to edit your apps/assets/stylesheets/application.css and add
+
+  require "stiki/application"
+
+To get the Stiki Stylehseets to be included.
   
 === Reloading Stiki in the development environment
 
