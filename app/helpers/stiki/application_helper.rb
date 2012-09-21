@@ -12,10 +12,6 @@ module Stiki
       end
     end
     
-    def javascript_enabled
-      Stiki.javascript_enabled == true
-    end
-    
     def user_name( author )
       if Stiki.user_name_via 
         author.user.send( Stiki.user_name_via ) if author && author.user

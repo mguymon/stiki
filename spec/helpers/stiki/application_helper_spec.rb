@@ -7,14 +7,6 @@ describe Stiki::ApplicationHelper do
     helper.stiki_routes.should eql Stiki::Engine.routes.url_helpers
   end
   
-  it "should expose Stiki#javascript_enabled as javascript_enabled" do
-    Stiki.javascript_enabled = false
-    helper.javascript_enabled.should be_false
-    
-    Stiki.javascript_enabled = true
-    helper.javascript_enabled.should be_true
-  end
-  
   it "should get user_name for user" do
     Stiki.user_name_via = :name
     

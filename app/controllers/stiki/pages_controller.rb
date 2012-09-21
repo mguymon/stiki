@@ -1,5 +1,5 @@
 require_dependency "stiki/application_controller"
-require 'redcarpet'
+require 'kramdown'
 
 module Stiki
   class PagesController < ApplicationController
@@ -20,9 +20,9 @@ module Stiki
         flash[:error] = "Wiki Pages does not exist: #{params[:id]}"
         redirect_to stiki_routes.space_pages_path(@space)
       else
-        markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-          :autolink => true, :space_after_headers => true)
-        @markup = markdown.render( @page.body ).html_safe 
+        markdown = Kramdown::Document.new(@page.body)
+        
+        @markup = markdown.to_html.html_safe
       end
     end
     

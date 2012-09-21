@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20120731063721) do
     t.integer  "authorable_id"
     t.string   "authorable_type"
     t.boolean  "creator"
+    t.boolean  "last_edit"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
