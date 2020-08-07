@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 3.2.1"
   s.add_dependency "friendly_id", "~> 4.0.1"
-  s.add_dependency 'kramdown', "~>  0.14.0"
+  s.add_dependency 'kramdown', ">= 0.14", "< 2.4"
 
   s.add_development_dependency "devise", "~> 2.0.1"
   s.add_development_dependency "cancan", "~> 1.6.1"
